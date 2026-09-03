@@ -1,18 +1,60 @@
 {
-  "version": 1,
+  "version": 2,
   "date": "2026-09-03",
   "medicines": [
     {
-      "ean13": "6118009998887",
-      "nom_commercial": "PHARMALIK TEST NOUVEAU",
-      "dci": "PARACETAMOL",
-      "forme_dosage": "COMPRIME à 500 MG",
-      "presentation": "1 BOITE 16 COMPRIME",
-      "ppm": 12.50,
-      "classe_therapeutique": "ANALGESIQUE ANTIPYRETIQUE",
+      "nom_commercial": "GLAUTRA",
+      "dci": "DORZOLAMIDE",
+      "forme_dosage": "COLLYRE EN SOLUTION à 20 MG/ML",
+      "presentation": "BOITE D'UN FLACON DE 5 ML",
+      "ppm": 89.00,
+      "classe_therapeutique": "INHIBITEUR DE L'ANHYDRASE CARBONIQUE",
+      "forme_galenique": "collyre",
+      "remboursable": "NON",
+      "code_tableau": "TABLEAU_A"
+    },
+    {
+      "nom_commercial": "GLAUTRA PLUS",
+      "dci": "DORZOLAMIDE / TIMOLOL",
+      "forme_dosage": "COLLYRE EN SOLUTION à 20 MG/ML + 5 MG/ML",
+      "presentation": "BOITE D'UN FLACON DE 5 ML",
+      "ppm": 101.40,
+      "classe_therapeutique": "BETABLOQUANT / INHIBITEUR ANHYDRASE CARBONIQUE",
+      "forme_galenique": "collyre",
+      "remboursable": "NON",
+      "code_tableau": "TABLEAU_A"
+    },
+    {
+      "nom_commercial": "NEOBIANACID",
+      "dci": "COMPLEXE VEGETAL ET MINERAL (POLIPROTECT)",
+      "forme_dosage": "COMPRIME A SUCER",
+      "presentation": "BOITE DE 14",
+      "ppm": 114.00,
+      "classe_therapeutique": "ANTI-ACIDES",
       "forme_galenique": "cp",
-      "pack_qty": 16,
-      "remboursable": "OUI",
+      "remboursable": "NON",
+      "code_tableau": "HORS_TABLEAU"
+    },
+    {
+      "nom_commercial": "NEOFITOROID",
+      "dci": "COMPLEXE VEGETAL (HELICHRYSE, ALOE VERA, HYPERICUM)",
+      "forme_dosage": "POMMADE",
+      "presentation": "TUBE DE 40 ML AVEC APPLICATEUR ENDORECTAL",
+      "ppm": 157.00,
+      "classe_therapeutique": "TRAITEMENT TOPIQUE DES HEMORROIDES",
+      "forme_galenique": "pommade",
+      "remboursable": "NON",
+      "code_tableau": "HORS_TABLEAU"
+    },
+    {
+      "nom_commercial": "IRONLINK KIDS",
+      "dci": "SACCHARATE FERRIQUE",
+      "forme_dosage": "FLACON BUVABLE",
+      "presentation": "BOITE DE 10 FLACONS BUVABLES DE 8 ML GOUT CARAMEL",
+      "ppm": 98.00,
+      "classe_therapeutique": "ANTIANEMIQUE",
+      "forme_galenique": "solution",
+      "remboursable": "NON",
       "code_tableau": "HORS_TABLEAU"
     }
   ]
