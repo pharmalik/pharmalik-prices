@@ -1,6 +1,7 @@
 // Télécharge la liste MedBase et écrit data/medbase-prix.json (lu automatiquement par Pharmalik).
 // La clé API vient du secret GitHub MEDBASE_API_KEY : elle n'est jamais écrite dans un fichier.
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 const BASE = 'https://api.medbase.ma/api/v1';
 const KEY = process.env.MEDBASE_API_KEY;
 if (!KEY) { console.error('MEDBASE_API_KEY manquante (Settings > Secrets and variables > Actions).'); process.exit(1); }
@@ -42,5 +43,10 @@ if (items.length < 100 || (prev && items.length < prev * 0.9)) {
 }
 items.sort((a, b) => String(a.id).localeCompare(String(b.id)));
 fs.mkdirSync('data', { recursive: true });
-fs.writeFileSync(OUT, JSON.stringify({ source: 'MedBase', count: items.length, items }));
+// Signature ECDSA P-256 : la cle privee vient du secret MEDBASE_SIGN_KEY ; l'app ne fait confiance qu'aux fichiers signes.
+const SK = process.env.MEDBASE_SIGN_KEY;
+if (!SK) { console.error('MEDBASE_SIGN_KEY manquante : fichier NON publie.'); process.exit(1); }
+const hex = crypto.createHash('sha256').update(JSON.stringify(items)).digest('hex');
+const sig = crypto.sign('sha256', Buffer.from('MB1|' + items.length + '|' + hex), { key: SK, dsaEncoding: 'ieee-p1363' }).toString('base64');
+fs.writeFileSync(OUT, JSON.stringify({ source: 'MedBase', count: items.length, items, sig }));
 console.log('OK', items.length, 'médicaments');
