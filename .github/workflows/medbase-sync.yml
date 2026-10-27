@@ -1,0 +1,25 @@
+name: MedBase - mise à jour des prix
+on:
+  schedule:
+    - cron: '17 3 * * *'   # tous les jours à 03:17 UTC
+  workflow_dispatch:        # bouton "Run workflow" pour lancer à la main
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Télécharger MedBase
+        run: node scripts/medbase_sync.mjs
+        env:
+          MEDBASE_API_KEY: ${{ secrets.MEDBASE_API_KEY }}
+      - name: Publier si changement
+        run: |
+          git config user.name "pharmalik-bot"
+          git config user.email "pharmalik-bot@users.noreply.github.com"
+          git add data/medbase-prix.json
+          git diff --cached --quiet || (git commit -m "MedBase: mise à jour des prix" && git push)
