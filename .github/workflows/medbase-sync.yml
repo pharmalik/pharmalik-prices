@@ -17,6 +17,7 @@ jobs:
         run: node scripts/medbase_sync.mjs
         env:
           MEDBASE_API_KEY: ${{ secrets.MEDBASE_API_KEY }}
+          MEDBASE_SIGN_KEY: ${{ secrets.MEDBASE_SIGN_KEY }}
       - name: Publier si changement
         run: |
           git config user.name "pharmalik-bot"
